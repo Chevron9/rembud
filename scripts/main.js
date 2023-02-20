@@ -1,15 +1,15 @@
-let myButton = document.querySelector('button');
+let remindButton = document.getElementById('remindbtn');
 let duration = document.getElementById("input_duration")
 let timer1 = document.getElementById("timer1")
 let message = document.getElementById("message")
 let interval = 0
 let Interval01
 
-myButton.onclick = function() {
+remindButton.onclick = function() {
     timer = convert_to_ms(duration.value)
     setTimeout(() => ping(),timer)
     let inval = 100
-    Interval01 = setInterval(countdown,inval,timer,inval) //function, interval, arg1, arg2
+    Interval01 = setTimeout(countdown,inval,timer,inval) //function, interval, arg1, arg2
   }
 
 function ping() {
