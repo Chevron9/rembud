@@ -1,15 +1,13 @@
 let remindButton = document.getElementById('remindbtn');
-let duration = document.getElementById("input_duration")
+let duration = document.getElementById("remind_input")
 let timer1 = document.getElementById("timer1")
-let message = document.getElementById("message")
-let interval = 0
-let Interval01
+let message_field = document.getElementById("message_field")
+var audio = new Audio('sfx/alert.wav');
+
 
 remindButton.onclick = function() {
-    timer = convert_to_ms(duration.value)
-    setTimeout(() => ping(),timer)
-    let inval = 100
-    Interval01 = setTimeout(countdown,inval,timer,inval) //function, interval, arg1, arg2
+    timer_duration = convert_to_ms(duration.value)
+    start_timer(timer_duration)
   }
 
 function ping() {
@@ -50,16 +48,30 @@ function convert_to_ms(duration) {
   return timer*1000
 }
 
-function countdown(start,intr) {
-  display_time = msToTime(start-interval)
+function start_timer(timer_duration) {
+  //takes in milliseconds, starts the clock
+  setInterval(clock_beat,1)
+}
+
+function countdown_display(duration) {
+  display_time = msToTime(duration)
   timer1.innerHTML = "Timer 1 "+display_time+" target_time "+message.value
   interval = interval + intr
   let elapsed = start-interval
-  if (elapsed < 0){
+  if (elapsed < 0) {
     clearInterval(Interval01);
     interval = 0
-  } 
+  }
+}
 
+function clock_beat(duration) {
+  //runs every milliseconds and updates displays
+  setInterval()
+}
+
+function notify() {
+  audio.play(); //todo test
+  document.title = "alert!"
 }
 
 function msToTime(ms) {

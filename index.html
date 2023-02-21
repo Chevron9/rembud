@@ -12,11 +12,17 @@
     Circular time selector
     Will trigger at.... "target time"
     <hr class="solid">
-    <p>Remind me in... <input id="input_duration" type="text"></p>
+    <p>Remind me 
+      <select name="timer_mode" id="timer_mode"> 
+        <option value="in">in</option>
+        <option value="at">at/on</option>
+        </select>
+      
+      <input id="remind_input" type="text"></p>
 
-    <p>Remind me at/on... <input id="input_point" type="text"></p>
+      <!-- datetime-local for input -->
 
-    <p>Message: <input id="message" type="text"></p>
+    <p>Message: <input id="message_field" type="text"></p>
     <button id="remindbtn">Remind!</button>
     <hr class="solid">
     <h1>Current timers</h1>
