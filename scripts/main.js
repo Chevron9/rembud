@@ -1,14 +1,28 @@
 let remindButton = document.getElementById('remindbtn');
-let duration = document.getElementById("remind_input")
-let timer1 = document.getElementById("timer1")
-let message_field = document.getElementById("message_field")
-var audio = new Audio('sfx/alert.wav');
+let duration = document.getElementById("remind_input");
+let timer1 = document.getElementById("timer1");
+let message_field = document.getElementById("message_field");
+let reminder_mode = document.getElementById("timer_mode");
+var alert = new Audio('sfx/alert.wav');
+let now;
 
 
 remindButton.onclick = function() {
-    timer_duration = convert_to_ms(duration.value)
-    start_timer(timer_duration)
+  if (reminder_mode.value == "in") {
+    now = Date.now()
+    timer_duration = convert_to_ms(duration.value);
+    start_timer(timer_duration,now);
+    console.log(now)
+    console.log(timer_duration)
+    console.log(now-timer_duration)
   }
+  else if (reminder_mode.value == "at") {
+    console.log("at mode")
+  }
+  else {
+    console.log("weird mode")
+  }
+}
 
 function ping() {
   alert(message.value)
@@ -48,9 +62,12 @@ function convert_to_ms(duration) {
   return timer*1000
 }
 
-function start_timer(timer_duration) {
+function start_timer(timer_duration, end) {
   //takes in milliseconds, starts the clock
-  setInterval(clock_beat,1)
+  clock_interval = setInterval(clock_beat,1)
+
+  clearInterval(clock_interval)
+
 }
 
 function countdown_display(duration) {
@@ -66,11 +83,11 @@ function countdown_display(duration) {
 
 function clock_beat(duration) {
   //runs every milliseconds and updates displays
-  setInterval()
+  countdown_display
 }
 
 function notify() {
-  audio.play(); //todo test
+  alert.play(); //todo test
   document.title = "alert!"
 }
 
