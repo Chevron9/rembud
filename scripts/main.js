@@ -3,7 +3,7 @@ let duration = document.getElementById("remind_input");
 let timer1 = document.getElementById("timer1");
 let message_field = document.getElementById("message_field");
 let reminder_mode = document.getElementById("timer_mode");
-var alert = new Audio('sfx/alert.wav');
+var alert_sfx = new Audio('sfx/alert.wav');
 let start;
 let now;
 
@@ -26,10 +26,6 @@ remindButton.onclick = function() {
   }
 }
 
-function ping() {
-  alert(message.value)
-}
-
 function convert_to_ms(duration) {
   let re = /\d+[shmd]*/g
   let timer = 0
@@ -38,9 +34,8 @@ function convert_to_ms(duration) {
   let chunks = duration.matchAll(re)
   for (let i of chunks) {
     i = i.at(0)
-    console.log(i)
+    //console.log(i)
     if (i.includes("s")) {
-      console.log("s")
       times=parseInt(i.slice(0,-1))
       timer=timer+times
     }
@@ -60,7 +55,7 @@ function convert_to_ms(duration) {
       await ctx.send("You need to specify a time! Time should be specified as 13s37m42h12d leaving away time steps as desired.")
       return*/
   }
-  console.log(timer)
+  //console.log(timer)
   return timer*1000
 }
 
@@ -71,7 +66,7 @@ function start_timer(timer_duration, start,message) {
   console.log(`Timers ends at ${end}`)
   //add timer ui
 
-  clock_beat(end,message)
+  clock_beat(end,message,Date.now())
 }
 
 function countdown_display(time_left,message) {
@@ -79,31 +74,49 @@ function countdown_display(time_left,message) {
   timer1.innerHTML = "Timer 1 "+display_time+" target_time "+message
 }
 
-function clock_beat(end,message) {
-  //runs every milliseconds and updates displays
+function clock_beat(end,message,expected) {
+  //runs every 100 milliseconds and updates displays
   now = Date.now()
+  let execution_delta = now - expected
+  let new_timeout = 100
+  console.log(`execution delta ${execution_delta}`)
+
+  if (execution_delta<0) {
+    Error("execution happened earlier than expected")
+  } else if (execution_delta == 0) {
+    //pass
+  } else if (execution_delta > 0){
+    new_timeout -= execution_delta 
+  }
+
   let time_left = end-now
 
   if (time_left<0) {
-    end_timer()
+    end_timer(message)
   }
   else {
     countdown_display(time_left,message)
-    setTimeout(clock_beat,100,end,message)
+    let next_expected = now + new_timeout
+    setTimeout(clock_beat,new_timeout,end,message,next_expected)
   }
-
 }
 
 
-function end_timer(){
+function end_timer(message){
   //reset, cleanup etc
-  notify()
+  notify(message)
+}
+
+function reset_title(){
+  document.title = "Rembud"
 }
 
 
-function notify() {
-  alert.play(); //todo test
+function notify(message) {
+  alert_sfx.play(); //todo test
   document.title = "alert!"
+  setTimeout(reset_title,1000*10)
+  alert(message)
 }
 
 function msToTime(ms) {
