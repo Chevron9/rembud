@@ -4,15 +4,17 @@ let timer1 = document.getElementById("timer1");
 let message_field = document.getElementById("message_field");
 let reminder_mode = document.getElementById("timer_mode");
 var alert = new Audio('sfx/alert.wav');
+let start;
 let now;
 
 
 remindButton.onclick = function() {
+  let message = message_field.value
+
   if (reminder_mode.value == "in") {
-    now = Date.now()
+    start = Date.now()
     timer_duration = convert_to_ms(duration.value);
-    start_timer(timer_duration,now);
-    console.log(now)
+    start_timer(timer_duration,start,message);
     console.log(timer_duration)
     console.log(now-timer_duration)
   }
@@ -62,29 +64,42 @@ function convert_to_ms(duration) {
   return timer*1000
 }
 
-function start_timer(timer_duration, end) {
+function start_timer(timer_duration, start,message) {
   //takes in milliseconds, starts the clock
-  clock_interval = setInterval(clock_beat,1)
+  let end;
+  end = start+timer_duration;
+  console.log(`Timers ends at ${end}`)
+  //add timer ui
 
-  clearInterval(clock_interval)
-
+  clock_beat(end,message)
 }
 
-function countdown_display(duration) {
-  display_time = msToTime(duration)
-  timer1.innerHTML = "Timer 1 "+display_time+" target_time "+message.value
-  interval = interval + intr
-  let elapsed = start-interval
-  if (elapsed < 0) {
-    clearInterval(Interval01);
-    interval = 0
-  }
+function countdown_display(time_left,message) {
+  display_time = msToTime(time_left)
+  timer1.innerHTML = "Timer 1 "+display_time+" target_time "+message
 }
 
-function clock_beat(duration) {
+function clock_beat(end,message) {
   //runs every milliseconds and updates displays
-  countdown_display
+  now = Date.now()
+  let time_left = end-now
+
+  if (time_left<0) {
+    end_timer()
+  }
+  else {
+    countdown_display(time_left,message)
+    setTimeout(clock_beat,100,end,message)
+  }
+
 }
+
+
+function end_timer(){
+  //reset, cleanup etc
+  notify()
+}
+
 
 function notify() {
   alert.play(); //todo test
