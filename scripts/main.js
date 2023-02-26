@@ -1,3 +1,4 @@
+"use strict";
 let remindButton = document.getElementById('remindbtn');
 let duration = document.getElementById("remind_input");
 let timer1 = document.getElementById("timer1");
@@ -6,6 +7,7 @@ let reminder_mode = document.getElementById("timer_mode");
 var alert_sfx = new Audio('sfx/alert.wav');
 let start;
 let now;
+let timers = [];
 
 
 remindButton.onclick = function() {
@@ -61,9 +63,8 @@ function convert_to_ms(duration) {
 
 function start_timer(timer_duration, start,message) {
   //takes in milliseconds, starts the clock
-  let end;
-  end = start+timer_duration;
-  console.log(`Timers ends at ${end}`)
+  let new_timer = new Timer(timer_duration,start,message)
+  timers.push(new_timer)
   //add timer ui
 
   clock_beat(end,message,Date.now())
