@@ -10,4 +10,11 @@ class Timer {
         this.end_date = new Date(end)
         console.log(`${end_date}`)
     }
+
+    end_timer(){
+        //reset, cleanup etc
+        notify(this.message)
+    }
 }
+
+export {Timer};
