@@ -57,9 +57,14 @@ function start_timer(timer_duration, start,message) {
   let new_timer = new Timer(timer_duration,start,message)
   timers.push(new_timer)
   //add timer ui
+  //add list entry that can be updated by update display, assign it as proerty 
+  //to the timer object
 }
 
-function countdown_display(time_left,message) {
+function update_displays() {
+  for (let timer of timers){
+
+  }
   display_time = msToTime(time_left)
   timer1.innerHTML = "Timer 1 "+display_time+" target_time "+message
 }
@@ -75,13 +80,15 @@ function update_tick(clock_now) {
   //check timer expiry, update displays
   for (let timer of timers){
     console.log(timer)
-    const time_left = timer.end-clock_now
+    const time_left = timer.end - clock_now
 
     if (time_left < 0){
       timer.end_timer(alert_sfx)
+      //delete timer from timers
     } else {
         console.log(time_left)
-        countdown_display(time_left)
     }
+
+    update_displays()
   }
 }
