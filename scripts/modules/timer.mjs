@@ -5,15 +5,26 @@ class Timer {
         this.start = start
         this.message = message
 
-        this.end = start+timer_duration;
-        console.log(`Timer ends at ${end}`)
-        this.end_date = new Date(end)
-        console.log(`${end_date}`)
+        this.end = start+duration;
+        console.log(`Timer ends at ${this.end}`)
+        this.end_date = new Date(this.end)
+        console.log(`${this.end_date}`)
     }
 
-    end_timer(){
+    end_timer(sfx){
         //reset, cleanup etc
-        notify(this.message)
+        notify(sfx)
+    }
+    
+    reset_title(){
+        document.title = "Rembud"
+    }
+      
+    notify(sfx) {
+        sfx.play();
+        document.title = "alert!"
+        setTimeout(reset_title,1000*10)
+        alert(this.message)
     }
 }
 
