@@ -90,17 +90,22 @@ function update_tick(clock_now) {
   //check timer expiry, update displays
   for (let timer of timers){
     console.log(timer)
-    const time_left = timer.end - clock_now
 
-    if (time_left < 0){
+    timer.now(clock_now)
+    timer.update_time_left()
+
+    if (timer.time_left < 0){
       timer.end_timer(alert_sfx)
       //delete timer from timers
       const t = timers.indexOf(timer)
       timers.splice(t,1)
-    } else {
-        console.log(time_left)
-    }
 
+      //remove UI
+      timer.node.parentNode.removeChild(timer.node)
+
+    } else {
+        console.log(timer.time_left)
+    }
     update_displays()
   }
 }

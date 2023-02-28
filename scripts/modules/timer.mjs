@@ -32,12 +32,16 @@ class Timer {
     }
 
     update_time_left() {
-        this.time_left = this.end - Date.now()
+        this.time_left = this.end - this.now
     }
 
     get countdown_view() {
         this.update_time_left()
         return `${msToTime(this.time_left)} ${this.end_date} Memo: ${this.message}`
+    }
+
+    set now(now) {
+        this.now = now
     }
 }
 

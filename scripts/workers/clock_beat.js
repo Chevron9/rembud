@@ -12,7 +12,7 @@ function clock_beat(expected) {
     let execution_delta = now - expected
     let new_timeout = 100
     
-    //console.log(`execution delta ${execution_delta}`)
+    console.log(`execution delta ${execution_delta}`)
   
     if (execution_delta<0) {
       Error("execution happened earlier than expected")
