@@ -1,3 +1,5 @@
+import { msToTime, convert_to_ms } from "./dateutils.mjs";
+
 class Timer {
 
     constructor(duration, start, message) {
@@ -9,11 +11,13 @@ class Timer {
         console.log(`Timer ends at ${this.end}`)
         this.end_date = new Date(this.end)
         console.log(`${this.end_date}`)
+
+        this.time_left = duration
     }
 
     end_timer(sfx){
         //reset, cleanup etc
-        notify(sfx)
+        this.notify(sfx)
     }
     
     reset_title(){
@@ -23,8 +27,17 @@ class Timer {
     notify(sfx) {
         sfx.play();
         document.title = "alert!"
-        setTimeout(reset_title,1000*10)
+        setTimeout(this.reset_title,1000*10)
         alert(this.message)
+    }
+
+    update_time_left() {
+        this.time_left = this.end - Date.now()
+    }
+
+    get countdown_view() {
+        this.update_time_left()
+        return `${msToTime(this.time_left)} ${this.end_date} Memo: ${this.message}`
     }
 }
 

@@ -7,9 +7,10 @@ const remindButton = document.getElementById('remindbtn');
 const duration = document.getElementById("remind_input");
 const message_field = document.getElementById("message_field");
 const reminder_mode = document.getElementById("timer_mode");
+const UItimer_list = document.getElementById("timerlist")
 
 //dynamic UI
-let timer1 = document.getElementById("timer1");
+
 //---
 
 var alert_sfx = new Audio('sfx/alert.wav');
@@ -59,14 +60,23 @@ function start_timer(timer_duration, start,message) {
   //add timer ui
   //add list entry that can be updated by update display, assign it as proerty 
   //to the timer object
+  const new_li = document.createElement("li")
+  const entry = construct_list_entry(new_timer)
+  new_li.innerText = entry
+  UItimer_list.appendChild(new_li)
+  new_timer.node = new_li
 }
 
 function update_displays() {
   for (let timer of timers){
-
+    let entry = construct_list_entry(timer)
+    timer.node.innerText = entry
   }
-  display_time = msToTime(time_left)
-  timer1.innerHTML = "Timer 1 "+display_time+" target_time "+message
+}
+
+function construct_list_entry(timer) {
+  var timer_num = timers.indexOf(timer) + 1
+  return `Timer ${timer_num} ${timer.countdown_view}`
 }
 
 Clock_beat.onmessage = (event) => {
@@ -85,6 +95,8 @@ function update_tick(clock_now) {
     if (time_left < 0){
       timer.end_timer(alert_sfx)
       //delete timer from timers
+      const t = timers.indexOf(timer)
+      timers.splice(t,1)
     } else {
         console.log(time_left)
     }
