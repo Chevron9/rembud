@@ -91,7 +91,7 @@ function update_tick(clock_now) {
   for (let timer of timers){
     console.log(timer)
 
-    timer.now(clock_now)
+    timer.now = clock_now
     timer.update_time_left()
 
     if (timer.time_left < 0){

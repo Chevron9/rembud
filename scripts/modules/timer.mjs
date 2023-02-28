@@ -39,10 +39,6 @@ class Timer {
         this.update_time_left()
         return `${msToTime(this.time_left)} ${this.end_date} Memo: ${this.message}`
     }
-
-    set now(now) {
-        this.now = now
-    }
 }
 
 export {Timer};
