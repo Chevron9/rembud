@@ -6,13 +6,14 @@ onmessage = (event) => {
 }
 
 function clock_beat(expected) {
-    //runs every 100 milliseconds and updates displays
+    //runs every new_timeout milliseconds and updates displays
+    let new_timeout = 250
   
     let now = Date.now()
     let execution_delta = now - expected
-    let new_timeout = 100
     
-    console.log(`execution delta ${execution_delta}`)
+    
+    //console.log(`execution delta ${execution_delta}`)
   
     if (execution_delta<0) {
       Error("execution happened earlier than expected")
