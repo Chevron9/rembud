@@ -1,0 +1,23 @@
+{
+  "name": "rembud",
+  "version": "1.0.0",
+  "description": "A timer/reminder app",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chevron9/rembud.git"
+  },
+  "author": "Daniel Mensch",
+  "license": "Copyright Reserved",
+  "bugs": {
+    "url": "https://github.com/Chevron9/rembud/issues"
+  },
+  "homepage": "https://github.com/Chevron9/rembud#readme",
+  "devDependencies": {
+    "jasmine": "^5.0.0"
+  }
+}

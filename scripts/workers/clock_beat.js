@@ -1,3 +1,4 @@
+//main function
 clock_beat(Date.now());
 
 
