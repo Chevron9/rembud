@@ -16,9 +16,25 @@
   <body>
     <h1>REMBUD</h1>
     <div class="radial_input"> 
-      <div class="radial_controller"></div>
+      <div class="radial_controller">
+        <div class="slidecontainer">
+          <input type="range" min="1" max="9999999" value="1" class="slider" id="myRange" oninput="myRange_val.value = this.value">
+        </div>
+      </div>
     </div>
-    Will trigger at.... "target time"
+    Will trigger in <output id="myRange_val">0</output> 'unit'
+
+    <div class="fastinput"> 
+      <div class="radial_controller">
+        <div class="circle" id="circle_base">
+        <!-- could do a lot of border divs and handle input via the control button (can you calc num rot?) -->
+        <div class="radial_control">
+          <div class="radial_handle">O</div>
+        </div>
+        </div>
+      </div>
+    </div>
+    This is <span id="radial_output">xxx</span>
     <hr class="solid">
     <p>Remind me 
       <select name="timer_mode" id="timer_mode"> 

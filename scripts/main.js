@@ -1,15 +1,20 @@
 "use strict";
 import { msToTime, convert_to_ms } from "./modules/dateutils.mjs";
 import {Timer} from "./modules/timer.mjs";
+import { updatepos, register_interaction } from "./radial_input.js";
 
 // UI elements
 const remindButton = document.getElementById('remindbtn');
 const duration = document.getElementById("remind_input");
 const message_field = document.getElementById("message_field");
 const reminder_mode = document.getElementById("timer_mode");
-const UItimer_list = document.getElementById("timerlist")
+const UItimer_list = document.getElementById("timerlist");
+
+const radial_base = document.getElementById("circle_base");
+const radial_output = document.getElementById("radial_output");
 
 //dynamic UI
+
 
 //---
 
@@ -19,6 +24,11 @@ var Clock_beat;
 
 //script start
 start_clock()
+
+
+//Events
+radial_base.addEventListener("pointerdown", register_interaction);
+
 
 //Worker wrapper
 function start_clock() {
