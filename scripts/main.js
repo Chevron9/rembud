@@ -1,7 +1,7 @@
 "use strict";
 import { msToTime, convert_to_ms } from "./modules/dateutils.mjs";
 import {Timer} from "./modules/timer.mjs";
-import { updatepos, register_interaction } from "./radial_input.js";
+import { updatepos, register_interaction } from "./modules/radial_input.mjs";
 
 // UI elements
 const remindButton = document.getElementById('remindbtn');
@@ -27,7 +27,7 @@ start_clock()
 
 
 //Events
-radial_base.addEventListener("pointerdown", register_interaction);
+radial_control.addEventListener("pointerdown", register_interaction);
 
 
 //Worker wrapper

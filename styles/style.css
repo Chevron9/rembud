@@ -17,6 +17,82 @@ p, li {
   letter-spacing: 1px;
 }
 
+/* radialinput */
+.radialinput {
+  flex: 0 0 58.33333%;
+  max-width: 58.33333%;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.circle_wrap {
+	position: relative;
+	width: 43vw;
+	height: 43vw;
+	min-width: 300px;
+	min-height: 300px;
+	max-width: 600px;
+	max-height: 600px;
+}
+
+.circle {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	z-index: 1;
+}
+
+.radial_control {
+	background-color: #0e89e7;
+	color: #fff;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	position: absolute;
+	top: 34%;
+	left: 96%;
+	transform: translate(-50%,-50%);
+	cursor: pointer;
+	user-select: none;
+}
+
+
+.radial_handle {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.radial_handle_wrap {
+	font-size: 30px;
+	font-weight: 700;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+
+
+
+/* .circle {
+  border: 10px solid #ffffff;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.radial_control {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
 .radial_handle {
   cursor: pointer;
   top: 0%;
@@ -26,17 +102,11 @@ p, li {
   position: absolute;
   padding: 0;
   
-}
-
-.radial_control {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-
-.circle {
-  border: 10px solid #ffffff;
+  border: 3px solid red;
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
-}
+  background-color: red;
+  
+} */
+
+
+
