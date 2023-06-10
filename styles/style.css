@@ -74,39 +74,43 @@ p, li {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	-webkit-transform: translate(-50%,-50%);
 	transform: translate(-50%,-50%);
 }
 
-
-
-/* .circle {
-  border: 10px solid #ffffff;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-}
-
-.radial_control {
-	position: relative;
+/* This is the backgroudn circle */
+.circle_slider {
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
+	border: 10px solid #0e0688;
+	border-radius: 50%;
+	z-index: 0;
 }
 
-.radial_handle {
-  cursor: pointer;
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  text-align: center;
-  position: absolute;
-  padding: 0;
-  
-  border: 3px solid red;
-  border-radius: 50%;
-  background-color: red;
-  
-} */
+.overlay_wrap1 {
+	position: absolute;
+	top: -9px;
+	right: -10px;
+	height: calc(100% + 22px);
+	width: calc(50% + 10px);
+	overflow: hidden;
+}
 
-
+.overlay1 {
+	position: absolute;
+	background-color: transparent;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: calc(100% + 10px);
+	transform-origin: 10px 50%;
+	transform: rotate(1.2356rad);
+	border-radius: 0 99999px 99999px 0;
+	border: 12px solid #09db14;
+	border-left: none;
+	margin-right: -1px;
+	margin-top: -1px;
+}
 
