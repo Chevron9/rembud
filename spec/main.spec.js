@@ -8,3 +8,4 @@ it("MS converter test", () => {
     expect(dateutils.msToTime(900)).toBe("00:00:00:00");
     expect(dateutils.msToTime(60*1000)).toBe("00:00:01:00");
 });
+

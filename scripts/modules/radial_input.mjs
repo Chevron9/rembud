@@ -1,8 +1,8 @@
 
 function register_interaction(event) {
-    event.currentTarget.addEventListener("pointermove", updatepos);
+    document.addEventListener("pointermove", updatepos);
 
-    event.currentTarget.addEventListener("pointerup", remove_ev)
+    document.addEventListener("pointerup", remove_ev)
 }
 
 
@@ -17,7 +17,7 @@ function updatepos(event) {
 }
 
 function remove_ev(e) {
-    e.currentTarget.removeEventListener("pointermove", updatepos);
+    document.removeEventListener("pointermove", updatepos);
 }
 
 
