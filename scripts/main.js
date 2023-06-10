@@ -27,7 +27,7 @@ start_clock()
 
 
 //Events
-radial_control.addEventListener("pointerdown", register_interaction);
+radial_base.addEventListener("pointerdown", register_interaction);
 
 
 //Worker wrapper

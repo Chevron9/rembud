@@ -19,24 +19,37 @@
 
     Will trigger in <output id="myRange_val">0</output> 'unit'
 
-    <div class="radialinput"> 
-      <div class="circle_wrap">
-        <div class="circle" id="circle_base">
-        <!-- a lot of border divs and handle input via the control button (can you calc num rot?) -->
-          <div class="radial_control">
-            <div class="radial_handle">
-              <div class="radial_handle_wrap">R</div>
+    <div class="radial_flex">
+      <!-- This is the radial input widget -->
+      <div class="radialinput"> 
+        <!-- This wraps both circle elements-->
+        <div class="circle_wrap">
+          <!-- Control element -->
+          <div class="circle" id="circle_base">
+          <!-- a lot of border divs and handle input via the control button (can you calc num rot?) -->
+            <div class="radial_control">
+              <div class="radial_handle">
+                <div class="radial_handle_elem">+</div>
+              </div>
+            </div>
+          </div>
+          <!-- Background and progress circle -->
+          <div class="circle_slider">
+            <div class="overlay_wrap1">
+              <div class="overlay1"></div>
+            </div>
+            <div class="overlay_wrap2">
+              <div class="overlay2"></div>
             </div>
           </div>
         </div>
-        <div class="circle_slider">
-          <div class="overlay_wrap1">
-            <div class="overlay1"></div>
-          </div>
-        </div>
       </div>
-    </div>
+  </div>
+    <!-- radial input end -->
     This is <span id="radial_output">xxx</span>
+
+
+
     <hr class="solid">
     <p>Remind me 
       <select name="timer_mode" id="timer_mode"> 
