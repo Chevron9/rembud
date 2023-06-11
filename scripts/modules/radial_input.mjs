@@ -20,6 +20,8 @@ function update_radial_controller_position(event) {
     y = event.clientY;
     radial_output.textContent = `pos ${x} and ${y}`;
 
+    
+
     //get circle center
     const radial_base = document.getElementById("circle_base");
 
@@ -39,8 +41,8 @@ function update_radial_controller_position(event) {
 
     //mouse position relative to circle center
     let mouse_rel_X =  event.clientX - x_radial_center
-    let mouse_rel_Y = event.clientY - y_radial_center
-    
+    let mouse_rel_Y = y_radial_center - event.clientY 
+
     //theta is the angle of the mouse position on the unit circle
     let theta
 
@@ -79,6 +81,14 @@ function update_radial_controller_position(event) {
     if (newPercent > 100) {
         newPercent -= 100
     }
+
+    //debug text
+    mouse_x_y.textContent = `${x}, ${y}`
+
+    circle_coords.textContent = `${x_radial_center}, ${y_radial_center}`
+    mouse_rel.textContent = `${mouse_rel_X}, ${mouse_rel_Y}`
+    control.textContent = `${control_x}, ${control_y}`
+    theta_span.textContent = `${theta}`
 
 }
 
