@@ -2,7 +2,6 @@ html {
   font-size: 14px;
   font-family: 'Open Sans', sans-serif;
   background-color: #242424;
-  font-display: swap;
   color: #fff;
 }
 
@@ -68,8 +67,8 @@ p, li {
 	height: 48px;
 	border-radius: 50%;
 	position: absolute;
-	top: 34%;
-	left: 96%;
+	top: 0%;
+	left: 50%;
 	transform: translate(-50%,-50%);
 	cursor: pointer;
 	user-select: none;
