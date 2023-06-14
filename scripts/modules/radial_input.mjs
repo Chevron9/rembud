@@ -20,13 +20,8 @@ function update_radial_controller_position(event) {
     y = event.clientY;
     radial_output.textContent = `pos ${x} and ${y}`;
 
-    
-
     //get circle center
     const radial_base = document.getElementById("circle_base");
-
-    //TODO controller does not follow cursor, why
-    
 
     //DOMrect object
     //these coordinates are relative to the viewport 
@@ -76,11 +71,14 @@ function update_radial_controller_position(event) {
     radial_controller.style.top = new_top
 
     //translate position into value
+    //add 25 to shift zero-point to top
     let newPercent = 100 - ((100 * theta) / (2 * Math.PI)) + 25
 
     if (newPercent > 100) {
         newPercent -= 100
     }
+
+    circle_time_out.textContent = `Circle Out: ${newPercent}`
 
     //debug text
     mouse_x_y.textContent = `${x}, ${y}`
