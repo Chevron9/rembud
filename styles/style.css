@@ -48,6 +48,15 @@ p, li {
 	max-height: 600px;
 }
 
+.circle_text {
+	text-align: center;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	box-sizing: inherit;
+	position: absolute;
+}
+
 
 .circle {
 	position: absolute;

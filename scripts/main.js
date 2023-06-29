@@ -30,6 +30,8 @@ start_clock()
 //Events
 radial_controller.addEventListener("pointerdown", register_interaction);
 
+radial_controller.jump_level = 0;
+
 
 //Worker wrapper
 function start_clock() {

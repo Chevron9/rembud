@@ -67,6 +67,37 @@ function update_radial_controller_position(event) {
     console.log(new_left)
     console.log(new_top)
 
+
+    level_jump.textContent = "NONE"
+
+    if ((radial_controller.last_theta >= (Math.PI/2)) 
+    && (radial_controller.last_theta <= Math.PI)) {
+        level_jump.textContent = "true"
+    } else {
+        level_jump.textContent = "false"
+    }
+
+    if (level_jump.textContent == "true" && theta <= (Math.PI/2)){
+        level_jump.textContent = "JUMPJUMPJUMP"
+        if (radial_controller.jump_level == 2) {
+            //pass
+        } else {
+            radial_controller.jump_level += 1;
+        }
+        
+    }
+
+    if (radial_controller.jump_level == 0){
+        circle_level.textContent = "min"
+
+    } else if (radial_controller.jump_level == 1) {
+        circle_level.textContent = "hr"
+
+    } else if (radial_controller.jump_level == 2) {
+        circle_level.textContent = "day"
+    }
+
+
     radial_controller.style.left = new_left
     radial_controller.style.top = new_top
 
@@ -87,6 +118,11 @@ function update_radial_controller_position(event) {
     mouse_rel.textContent = `${mouse_rel_X}, ${mouse_rel_Y}`
     control.textContent = `${control_x}, ${control_y}`
     theta_span.textContent = `${theta}`
+    last_theta.textContent = `${radial_controller.last_theta}`
+    
+
+
+    radial_controller.last_theta = theta
 
 }
 
