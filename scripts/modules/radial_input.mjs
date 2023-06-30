@@ -72,19 +72,33 @@ function update_radial_controller_position(event) {
 
     if ((radial_controller.last_theta >= (Math.PI/2)) 
     && (radial_controller.last_theta <= Math.PI)) {
-        level_jump.textContent = "true"
+        level_jump.textContent = "up"
+
+    } else if ((radial_controller.last_theta <= (Math.PI/2)) 
+    && (radial_controller.last_theta >= 1)) {
+        level_jump.textContent = "down"
+        
     } else {
         level_jump.textContent = "false"
     }
 
-    if (level_jump.textContent == "true" && theta <= (Math.PI/2)){
+    if (level_jump.textContent == "up" && theta <= (Math.PI/2)){
         level_jump.textContent = "JUMPJUMPJUMP"
         if (radial_controller.jump_level == 2) {
             //pass
         } else {
             radial_controller.jump_level += 1;
-        }
-        
+        }     
+    } else if (level_jump.textContent == "down" 
+    && 0 < (theta - radial_controller.last_theta)
+    && theta >= (Math.PI/2)
+    && radial_controller.last_theta <= (Math.PI/2) ){
+        level_jump.textContent = "JUMPJUMPJUMP"
+        if (radial_controller.jump_level == 0) {
+            //pass
+        } else {
+            radial_controller.jump_level -= 1;
+        }     
     }
 
     if (radial_controller.jump_level == 0){
