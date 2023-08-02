@@ -9,6 +9,23 @@ function remove_ev(e) {
     document.removeEventListener("pointermove", update_radial_controller_position);
 }
 
+function calculate_circle_to_time(radial_percent,radial_level) {
+    const time_units = ["m","h","d"]
+    const time_factor = {"m":60*1000,"h":60*60*1000,"d":24*60*60*1000}
+    const unit_max = {"m":60,"h":24,"d":14}
+
+    console.log(radial_level)
+    console.log(radial_percent)
+    console.log(time_units[radial_level])
+    console.log(unit_max[time_units[radial_level]])
+
+    let time_chosen_fraction
+    time_chosen_fraction = (radial_percent/100)*(unit_max[time_units[radial_level]])
+    
+    
+    circle_level.textContent = time_chosen_fraction.toString()+`${time_units[radial_level]}`
+}
+
 function update_radial_controller_position(event) {
     let radial_controller = document.getElementById("radial_controller");
     document.getElementsByClassName("")
@@ -64,10 +81,10 @@ function update_radial_controller_position(event) {
     let new_left = (radius + control_x).toString()+"px";
     let new_top = (radius - control_y).toString()+"px";
 
-    console.log(new_left)
-    console.log(new_top)
+    //console.log(new_left)
+    //console.log(new_top)
 
-
+    //TODO use proper variables!
     level_jump.textContent = "NONE"
 
     if ((radial_controller.last_theta >= (Math.PI/2)) 
@@ -124,6 +141,7 @@ function update_radial_controller_position(event) {
     }
 
     circle_time_out.textContent = `Circle Out: ${newPercent}`
+    calculate_circle_to_time(newPercent,radial_controller.jump_level)
 
     //debug text
     mouse_x_y.textContent = `${x}, ${y}`
@@ -133,6 +151,7 @@ function update_radial_controller_position(event) {
     control.textContent = `${control_x}, ${control_y}`
     theta_span.textContent = `${theta}`
     last_theta.textContent = `${radial_controller.last_theta}`
+    jump_lvl.textContent = `${radial_controller.jump_level}`
     
 
 
