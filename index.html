@@ -15,9 +15,6 @@
   </head>
   <body>
     <h1>REMBUD</h1>
-    <input type="range" min="1" max="9999999" value="1" class="slider" id="myRange" oninput="myRange_val.value = this.value">
-
-    Will trigger in <output id="myRange_val">0</output> 'unit'
 
     <div class="radial_flex">
       <!-- This is the radial input widget -->
@@ -27,8 +24,9 @@
           <div class="circle_text"><span id="circle_level"></span></div>
           <!-- Control element -->
           <div class="circle" id="circle_base">
-          <!-- a lot of border divs and handle input via the control button (can you calc num rot?) -->
+          <!-- a lot of border divs and handle input via the control button -->
             <div class="radial_control" id="radial_controller">
+              <!-- The clickeable/draggeable "button" of the radial controller  -->
               <div class="radial_handle">
                 <div class="radial_handle_elem">Y</div>
               </div>
@@ -45,7 +43,7 @@
           </div>
         </div>
       </div>
-  </div>
+    </div>
     <!-- radial input end -->
     
     <span id="circle_time_out"></span>
@@ -75,8 +73,14 @@
       <!-- datetime-local for input -->
 
     <p>Message: <input id="message_field" type="text"></p>
+    
+    <hr class="solid">
+    
+    <h3>You will be reminded in <span id="target_duration">?</span>, at <span id="target_clock">?</span>.</h3>
     <button id="remindbtn">Remind!</button>
     <hr class="solid">
+
+
     <h2>Current timers</h2>
     <ol id="timerlist"></ol>
     

@@ -11,6 +11,7 @@ function remove_ev(e) {
 
 function calculate_circle_to_time(radial_percent,radial_level) {
     const time_units = ["m","h","d"]
+    const time_units_elaborate = ["minutes","hours","days"]
     const time_factor = {"m":60*1000,"h":60*60*1000,"d":24*60*60*1000}
     const unit_max = {"m":60,"h":24,"d":14}
 
@@ -23,7 +24,7 @@ function calculate_circle_to_time(radial_percent,radial_level) {
     time_chosen_fraction = (radial_percent/100)*(unit_max[time_units[radial_level]])
     
     
-    circle_level.textContent = time_chosen_fraction.toString()+`${time_units[radial_level]}`
+    circle_level.textContent = Math.round(time_chosen_fraction).toString()+` ${time_units_elaborate[radial_level]}`
 }
 
 function update_radial_controller_position(event) {
