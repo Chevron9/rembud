@@ -34,7 +34,6 @@ p, li {
   width: 100%;
   padding: 15px;
 
-
 }
 
 /* Contains both circle elements - controller and background */
@@ -129,7 +128,7 @@ p, li {
   height: 100%;
   width: calc(100% + 10px);
   transform-origin: 10px 50%;
-  transform: rotate(1.2356rad);
+  transform: rotate(0rad);
   border-radius: 0 99999px 99999px 0;
   border: 12px solid #b91414;
   
@@ -155,7 +154,7 @@ p, li {
 	height: 100%;
 	width: calc(100% + 10px);
 	transform-origin: calc(100% - 10px) center;
-	transform: rotate(0deg);
+	transform: rotate(0rad);
 	border: 12px solid #f0e10c;
 	border-right: none;
 	border-radius: 9999px 0 0 9999px;

@@ -158,7 +158,30 @@ function update_radial_controller_position(event) {
 
     radial_controller.last_theta = theta
 
+    update_radial_overlay_fill(newPercent)
+
 }
 
+function update_radial_overlay_fill(newPercent) {
+    let overlay1 = document.querySelector(".overlay1");
+    let overlay2 = document.querySelector(".overlay2");
+
+    let overlayRotation1 = 0;
+    let overlayRotation2 = 0;
+
+    overlayRotation1 = 2 * Math.PI * newPercent / 100
+    overlayRotation2 = overlayRotation1 + Math.PI
+
+    if (newPercent > 50) {
+        overlayRotation1 = Math.PI
+    } else {
+        overlayRotation2 = 0
+    }
+
+    overlay1.style.transform = `rotate(${overlayRotation1}rad)`;
+    overlay2.style.transform = `rotate(${overlayRotation2}rad)`;
+    console.log("rotate(${overlayRotation1}rad)")
+
+}
 
 export {update_radial_controller_position, register_interaction};
